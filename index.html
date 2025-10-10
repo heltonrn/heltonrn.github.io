@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Página de Links — Hélton</title>
+  <meta name="description" content="Links, materiais e conteúdos do Hélton." />
+  <meta property="og:title" content="Links — Hélton" />
+  <meta property="og:description" content="Materiais, cursos e outras referências em um só lugar." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="" />
+  <meta name="theme-color" content="#0ea5e9" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b1217;
+      --card: #111a22;
+      --text: #e6edf3;
+      --muted: #9fb0bf;
+      --accent: #22d3ee;
+      --accent-2: #3b82f6;
+      --btn-bg: #0f1720;
+      --ring: #22d3ee66;
+    }
+    .light {
+      --bg: #f7fafc;
+      --card: #ffffff;
+      --text: #0b1217;
+      --muted: #4b5563;
+      --accent: #0ea5e9;
+      --accent-2: #2563eb;
+      --btn-bg: #f1f5f9;
+      --ring: #0ea5e966;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, "Noto Sans", sans-serif;
+      background: radial-gradient(1200px 800px at 10% -10%, #0ea5e91f, transparent 50%),
+                  radial-gradient(1200px 800px at 110% 10%, #22d3ee1a, transparent 40%),
+                  var(--bg);
+      color: var(--text);
+    }
+    a { color: inherit; text-decoration: none; }
+
+    .wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+      display: grid;
+      gap: 20px;
+      align-items: start;
+      min-height: 100%;
+    }
+
+    .header {
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      gap: 16px;
+      align-items: center;
+      background: color-mix(in oklab, var(--card) 92%, transparent);
+      border: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
+      border-radius: 18px;
+      padding: 14px 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,.25);
+      position: sticky;
+      top: 16px;
+      backdrop-filter: blur(8px);
+    }
+    .avatar {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      display: grid; place-items: center;
+      color: #fff; font-weight: 700; font-size: 26px;
+      border: 2px solid color-mix(in oklab, var(--text) 10%, transparent);
+    }
+    .who { line-height: 1.25; }
+    .who h1 { font-size: 20px; margin: 0 0 6px; }
+    .who p { margin: 0; color: var(--muted); font-size: 14px; }
+
+    .theme-toggle { 
+      display: inline-flex; align-items: center; gap: 8px; 
+      border: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
+      background: var(--btn-bg);
+      padding: 8px 10px; border-radius: 12px; cursor: pointer; user-select: none;
+      transition: transform .08s ease;
+    }
+    .theme-toggle:active { transform: translateY(1px); }
+
+    .section { margin-top: 8px; }
+    .section h2 { font-size: 14px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 18px 2px 8px; }
+
+    .links { display: grid; gap: 12px; }
+    .link {
+      display: grid; grid-template-columns: 42px 1fr auto; gap: 12px;
+      align-items: center;
+      background: var(--card);
+      border-radius: 16px;
+      padding: 12px 14px;
+      border: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
+      transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+    }
+    .link:hover { 
+      transform: translateY(-1px);
+      box-shadow: 0 12px 30px rgba(0,0,0,.25);
+      border-color: var(--accent);
+    }
+    .icon {
+      width: 36px; height: 36px; border-radius: 12px;
+      display: grid; place-items: center;
+      background: color-mix(in oklab, var(--accent) 20%, transparent);
+      border: 1px solid color-mix(in oklab, var(--accent) 35%, transparent);
+    }
+    .meta { display: grid; gap: 2px; }
+    .title { font-weight: 600; font-size: 16px; }
+    .desc { color: var(--muted); font-size: 13px; }
+    .cta {
+      font-size: 13px; font-weight: 600; padding: 8px 12px; border-radius: 999px;
+      background: linear-gradient(180deg, var(--accent), var(--accent-2));
+      color: white; border: none; text-transform: uppercase; letter-spacing: .05em;
+    }
+
+    .socials { display: flex; gap: 10px; flex-wrap: wrap; }
+    .socials a {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
+      background: var(--btn-bg);
+      padding: 10px 12px; border-radius: 12px; font-size: 14px; color: var(--muted);
+    }
+
+    .footer { text-align: center; color: var(--muted); font-size: 12px; margin-top: 10px; }
+    .footer a { color: var(--muted); text-decoration: underline; }
+
+    @media (max-width: 520px) {
+      .header { grid-template-columns: 64px 1fr auto; }
+      .avatar { width: 52px; height: 52px; font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <!--
+    COMO EDITAR
+    1) Troque a sigla "HN" no avatar pela sua.
+    2) Edite nome, bio e links abaixo.
+    3) Para adicionar mais links, duplique um bloco .link.
+    4) Para iniciar no modo claro por padrão, adicione class="light" na tag <body>.
+  -->
+  <div class="wrap">
+    <header class="header">
+      <div class="avatar" aria-hidden="true">HN</div>
+      <div class="who">
+        <h1>Hélton Ribeiro Nunes</h1>
+        <p>Professor, PO e dev. Conteúdos sobre Banco de Dados, Java, Agile e mais.</p>
+      </div>
+      <button id="toggleTheme" class="theme-toggle" aria-label="Alternar tema">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0V4a1 1 0 0 1 1-1Zm0 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm9-4a1 1 0 0 1 1 1 10 10 0 1 1-10-10 1 1 0 0 1 1 1 8 8 0 1 0 8 8ZM4 13a1 1 0 1 1 0-2H5a1 1 0 1 1 0 2H4Zm14 0a1 1 0 1 1 0-2h2a1 1 0 1 1 0 2h-2Zm-8 7a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0v-1a1 1 0 0 1 1-1Zm0-16a1 1 0 0 1 1-1V2a1 1 0 1 1-2 0v1a1 1 0 0 1 1 1Zm9.657 2.343a1 1 0 0 1 1.415 1.415l-.707.707a1 1 0 0 1-1.415-1.415l.707-.707ZM6.343 17.657a1 1 0 0 1 1.415 1.415l-.707.707a1 1 0 0 1-1.415-1.415l.707-.707Zm0-12.314a1 1 0 0 1 1.415-1.415l.707.707A1 1 0 0 1 7.05 6.05l-.707-.707Zm12.314 12.314a1 1 0 1 1 1.415 1.415l-.707.707a1 1 0 1 1-1.415-1.415l.707-.707Z" fill="currentColor"/></svg>
+        <span>Tema</span>
+      </button>
+    </header>
+
+    <section class="section">
+      <h2>Materiais & Cursos</h2>
+      <div class="links">
+        <a class="link" href="https://www.udemy.com/course/banco-de-dados-uma-verdadeira-introducao-para-iniciantes/?referralCode=4B9764A6EF9C88D059D4" target="_blank" rel="noopener">
+          <div class="icon" aria-hidden="true">
+            <!-- book icon -->
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v14a1 1 0 0 1-1.447.894L12 17.618 5.447 19.894A1 1 0 0 1 4 18.999V5Z" stroke="currentColor" stroke-width="1.5" /></svg>
+          </div>
+          <div class="meta">
+            <div class="title">Curso: Banco de Dados p/ Iniciantes</div>
+            <div class="desc">Apoie meu trabalho e aprenda SQL do zero.</div>
+          </div>
+          <span class="cta">Ver curso</span>
+        </a>
+
+        <a class="link" href="https://drive.google.com/" target="_blank" rel="noopener">
+          <div class="icon" aria-hidden="true">
+            <!-- folder icon -->
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 7a2 2 0 0 1 2-2h3.5a2 2 0 0 1 1.6.8l1.2 1.6H19a2 2 0 0 1 2 2v6.5a2.5 2.5 0 0 1-2.5 2.5H5.5A2.5 2.5 0 0 1 3 16.5V7Z" stroke="currentColor" stroke-width="1.5"/></svg>
+          </div>
+          <div class="meta">
+            <div class="title">Pasta de Materiais</div>
+            <div class="desc">Slides, PDFs e exercícios para aulas.</div>
+          </div>
+          <span class="cta">Abrir</span>
+        </a>
+
+        <a class="link" href="#" target="_blank" rel="noopener">
+          <div class="icon" aria-hidden="true">
+            <!-- code icon -->
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M8.5 8.5 5 12l3.5 3.5M15.5 8.5 19 12l-3.5 3.5M13 5l-2 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="meta">
+            <div class="title">Repositórios & Exemplos</div>
+            <div class="desc">Projetos Java, Spring, SQL, JSF/Thymeleaf.</div>
+          </div>
+          <span class="cta">Visitar</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Contato & Redes</h2>
+      <div class="socials">
+        <a href="mailto:heltonrn@gmail.com">
+          <!-- mail -->
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Zm0 0 8 6 8-6" stroke="currentColor" stroke-width="1.5"/></svg>
+          E-mail
+        </a>
+        <a href="https://www.linkedin.com/in/heltonrn/" target="_blank" rel="noopener">
+          <!-- linkedin -->
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.94 9.75v7.31M6.94 6.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm3.94 10.56v-4.69a2.31 2.31 0 1 1 4.62 0v4.69M10.88 12.5h0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://github.com/" target="_blank" rel="noopener">
+          <!-- github -->
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2C6.48 2 2 6.53 2 12.08c0 4.47 2.87 8.26 6.84 9.61.5.1.68-.22.68-.48v-1.7c-2.78.61-3.37-1.2-3.37-1.2-.45-1.16-1.1-1.47-1.1-1.47-.9-.62.07-.61.07-.61 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.1 2.91.84.09-.66.35-1.1.64-1.35-2.22-.26-4.56-1.12-4.56-5a3.94 3.94 0 0 1 1.05-2.73 3.64 3.64 0 0 1 .1-2.7s.84-.27 2.75 1.03a9.3 9.3 0 0 1 5 0c1.9-1.3 2.73-1.03 2.73-1.03a3.64 3.64 0 0 1 .1 2.7 3.94 3.94 0 0 1 1.05 2.73c0 3.9-2.34 4.74-4.57 5 .36.31.69.92.69 1.86v2.76c0 .26.18.58.68.48A10.1 10.1 0 0 0 22 12.08C22 6.53 17.52 2 12 2Z" fill="currentColor"/></svg>
+          GitHub
+        </a>
+        <a href="https://t.me/" target="_blank" rel="noopener">
+          <!-- telegram -->
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m20.75 4.56-17 6.61a.75.75 0 0 0 .04 1.4l4.18 1.54 1.67 5.1a.75.75 0 0 0 1.27.28l2.4-2.48 4.35 3.18a.75.75 0 0 0 1.17-.43l2.16-13.5a.75.75 0 0 0-1.04-.8Z" stroke="currentColor" stroke-width="1.5"/></svg>
+          Telegram
+        </a>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Notas</h2>
+      <div class="links">
+        <div class="link" role="button" tabindex="0" aria-pressed="false" onclick="copyLinks()" onkeypress="if(event.key==='Enter'){copyLinks()}">
+          <div class="icon" aria-hidden="true">
+            <!-- clipboard -->
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 5h6a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.5"/><path d="M14 3H10a1 1 0 0 0-1 1v1h6V4a1 1 0 0 0-1-1Z" stroke="currentColor" stroke-width="1.5"/></svg>
+          </div>
+          <div class="meta">
+            <div class="title">Copiar todos os links</div>
+            <div class="desc">Gera uma lista para compartilhar rapidamente.</div>
+          </div>
+          <span class="cta" id="copyCta">Copiar</span>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div>© <span id="year"></span> Hélton. Feito com ♡. 
+        <!-- Dica: hospede no GitHub Pages, Vercel ou Netlify. -->
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Tema: salva preferência do usuário
+    (function initTheme(){
+      try {
+        const saved = localStorage.getItem('theme');
+        if(saved === 'light') document.body.classList.add('light');
+      } catch(e) {}
+    })();
+
+    document.getElementById('toggleTheme').addEventListener('click', () => {
+      document.body.classList.toggle('light');
+      try { localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark'); } catch(e) {}
+    });
+
+    // Ano atual no rodapé
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Copiar lista de links
+    function copyLinks(){
+      const items = Array.from(document.querySelectorAll('a.link'));
+      const lines = items.map(a => `• ${a.querySelector('.title')?.textContent?.trim()} — ${a.href}`);
+      const text = lines.join('\n');
+      navigator.clipboard.writeText(text).then(()=>{
+        const cta = document.getElementById('copyCta');
+        const prev = cta.textContent; cta.textContent = 'Copiado!';
+        setTimeout(()=> cta.textContent = prev, 1600);
+      });
+    }
+  </script>
+</body>
+</html>
