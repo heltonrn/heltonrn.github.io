@@ -137,6 +137,13 @@
       .header { grid-template-columns: 64px 1fr auto; }
       .avatar { width: 52px; height: 52px; font-size: 20px; }
     }
+	
+	/* Cores do WhatsApp apenas nesse card */
+	.link--whatsapp { 
+	  --accent: #25D366;   /* green */
+	  --accent-2: #128C7E; /* dark green */
+	}
+
   </style>
 </head>
 <body>
@@ -152,7 +159,7 @@
       <div class="avatar" aria-hidden="true">HN</div>
       <div class="who">
         <h1>Hélton Ribeiro Nunes</h1>
-        <p>Professor, Analista de Sistemas/Requisitos, PO e dev. Conteúdos sobre Banco de Dados, Java, Agilidade e mais.</p>
+        <p>Professor, Analisa de Sistemas/Requisitos, PO e dev. Conteúdos sobre Banco de Dados, Java, Agilidade e mais.</p>
       </div>
       <button id="toggleTheme" class="theme-toggle" aria-label="Alternar tema">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0V4a1 1 0 0 1 1-1Zm0 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm9-4a1 1 0 0 1 1 1 10 10 0 1 1-10-10 1 1 0 0 1 1 1 8 8 0 1 0 8 8ZM4 13a1 1 0 1 1 0-2H5a1 1 0 1 1 0 2H4Zm14 0a1 1 0 1 1 0-2h2a1 1 0 1 1 0 2h-2Zm-8 7a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0v-1a1 1 0 0 1 1-1Zm0-16a1 1 0 0 1 1-1V2a1 1 0 1 1-2 0v1a1 1 0 0 1 1 1Zm9.657 2.343a1 1 0 0 1 1.415 1.415l-.707.707a1 1 0 0 1-1.415-1.415l.707-.707ZM6.343 17.657a1 1 0 0 1 1.415 1.415l-.707.707a1 1 0 0 1-1.415-1.415l.707-.707Zm0-12.314a1 1 0 0 1 1.415-1.415l.707.707A1 1 0 0 1 7.05 6.05l-.707-.707Zm12.314 12.314a1 1 0 1 1 1.415 1.415l-.707.707a1 1 0 1 1-1.415-1.415l.707-.707Z" fill="currentColor"/></svg>
@@ -186,8 +193,8 @@
           </div>
           <span class="cta">Abrir</span>
         </a>
-
-		  <a class="link" href="https://www.youtube.com/@prof.helton" target="_blank" rel="noopener">
+		
+		<a class="link" href="https://www.youtube.com/@prof.helton" target="_blank" rel="noopener">
 <div class="icon" aria-hidden="true">
 <!-- youtube icon -->
 <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M22 12s0-3.2-.4-4.7c-.2-.8-.8-1.4-1.6-1.6C18.5 5.3 12 5.3 12 5.3s-6.5 0-8 .4c-.8.2-1.4.8-1.6 1.6C2 8.8 2 12 2 12s0 3.2.4 4.7c.2.8.8 1.4 1.6 1.6 1.5.4 8 .4 8 .4s6.5 0 8-.4c.8-.2 1.4-.8 1.6-1.6.4-1.5.4-4.7.4-4.7ZM10 9.75l4.5 2.25L10 14.25v-4.5Z" fill="currentColor"/></svg>
@@ -212,23 +219,60 @@
         </a>
       </div>
     </section>
+	
+	<section class="section">
+  <h2>Contato & Redes</h2>
+  <div class="links">
 
-    <section class="section">
-      <h2>Contato & Redes</h2>
-      <div class="socials">
-        <a href="mailto:heltonrn@gmail.com">
-          <!-- mail -->
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Zm0 0 8 6 8-6" stroke="currentColor" stroke-width="1.5"/></svg>
-          E-mail
-        </a>
-        <a href="https://www.linkedin.com/in/helton-nunes/" target="_blank" rel="noopener">
-          <!-- linkedin -->
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.94 9.75v7.31M6.94 6.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm3.94 10.56v-4.69a2.31 2.31 0 1 1 4.62 0v4.69M10.88 12.5h0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-          LinkedIn
-        </a>
-
+    <!-- Comunidade DevMaster (WhatsApp) -->
+    <a class="link link--whatsapp" 
+       href="https://chat.whatsapp.com/Jp9EBXqmmX9IOKnaWTVlMA" 
+       target="_blank" rel="noopener">
+      <div class="icon" aria-hidden="true">
+        <!-- WhatsApp -->
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M20.52 3.48A11.94 11.94 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.1 1.6 5.88L0 24l6.3-1.64A11.93 11.93 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.48-8.52ZM12 22a9.93 9.93 0 0 1-5.04-1.38l-.36-.21-3.74.97.99-3.64-.23-.38A10 10 0 1 1 22 12c0 5.52-4.48 10-10 10Zm5.78-7.74c-.31-.16-1.82-.9-2.1-1-.28-.1-.48-.15-.68.16-.2.32-.78 1-.96 1.2-.18.2-.35.22-.66.08-.31-.16-1.31-.48-2.5-1.53-.92-.82-1.54-1.83-1.72-2.14-.18-.32-.02-.49.14-.64.14-.13.31-.34.46-.52.16-.18.21-.32.32-.54.1-.22.06-.4-.02-.56-.08-.16-.68-1.63-.93-2.23-.24-.58-.49-.51-.68-.52l-.58-.01c-.2 0-.52.08-.79.4-.27.32-1.04 1.02-1.04 2.5 0 1.47 1.07 2.9 1.22 3.1.15.2 2.1 3.21 5.1 4.5 3 .1 4.1.98 4.83.96.74-.02 2.42-.98 2.77-1.93.34-.95.34-1.77.24-1.93-.1-.16-.28-.24-.6-.4Z" fill="currentColor"/>
+        </svg>
       </div>
-    </section>
+      <div class="meta">
+        <div class="title">Comunidade DevMaster (WhatsApp)</div>
+        <div class="desc">Entre no grupo para trocar ideias sobre Java, BD, Agilidade e mais.</div>
+      </div>
+      <span class="cta">Participar</span>
+    </a>
+
+    <!-- E-mail -->
+    <a class="link" href="mailto:heltonrn@gmail.com">
+      <div class="icon" aria-hidden="true">
+        <!-- Mail -->
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 6h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Zm0 0 8 6 8-6" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <div class="meta">
+        <div class="title">E-mail</div>
+        <div class="desc">Fale diretamente comigo por e-mail.</div>
+      </div>
+      <span class="cta">Enviar</span>
+    </a>
+
+    <!-- LinkedIn -->
+    <a class="link" href="https://www.linkedin.com/in/helton-nunes/" target="_blank" rel="noopener">
+      <div class="icon" aria-hidden="true">
+        <!-- LinkedIn -->
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M6.94 9.75v7.31M6.94 6.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm3.94 10.56v-4.69a2.31 2.31 0 1 1 4.62 0v4.69M10.88 12.5h0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="meta">
+        <div class="title">LinkedIn</div>
+        <div class="desc">Conecte-se comigo e acompanhe novidades.</div>
+      </div>
+      <span class="cta">Visitar</span>
+    </a>
+
+  </div>
+</section>
 
     <footer class="footer">
       <div>© <span id="year"></span> Hélton Ribeiro Nunes. M.Sc. 
@@ -254,17 +298,7 @@
     // Ano atual no rodapé
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Copiar lista de links
-    function copyLinks(){
-      const items = Array.from(document.querySelectorAll('a.link'));
-      const lines = items.map(a => `• ${a.querySelector('.title')?.textContent?.trim()} — ${a.href}`);
-      const text = lines.join('\n');
-      navigator.clipboard.writeText(text).then(()=>{
-        const cta = document.getElementById('copyCta');
-        const prev = cta.textContent; cta.textContent = 'Copiado!';
-        setTimeout(()=> cta.textContent = prev, 1600);
-      });
-    }
+   
   </script>
 </body>
 </html>
