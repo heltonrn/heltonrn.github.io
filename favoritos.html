@@ -28,9 +28,6 @@
     border:1px solid color-mix(in oklab,var(--muted) 30%,transparent)}
   .btn{cursor:pointer;user-select:none;padding:8px 10px;border-radius:10px;border:1px solid color-mix(in oklab,var(--muted) 30%,transparent);
     background:var(--card);color:var(--text)}
-  .nav{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0}
-  .nav a{text-decoration:none;color:var(--text);background:var(--card);
-    border:1px solid color-mix(in oklab,var(--muted) 30%,transparent);padding:6px 10px;border-radius:999px}
   .section{margin-top:28px}
   .section h2{font-size:18px;margin:0 0 14px;display:flex;align-items:center;gap:8px}
   .grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
@@ -46,8 +43,6 @@
   .hr{height:1px;background:color-mix(in oklab,var(--muted) 20%,transparent);margin:24px 0}
   .kbd{font-family:ui-monospace,Menlo,Consolas,monospace;background:var(--card);padding:2px 6px;border-radius:6px;
     border:1px solid color-mix(in oklab,var(--muted) 25%,transparent)}
-
-  /* botão flutuante */
   #topBtn {
     position: fixed;
     bottom: 20px;
@@ -64,6 +59,44 @@
     transition: opacity 0.2s ease;
   }
   #topBtn:hover {opacity: 0.85;}
+
+  html { scroll-behavior: smooth; }
+
+  #menu-grupos {
+    position: sticky;
+    top: 60px;
+    z-index: 4;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    max-width: 900px;
+    margin: 0 auto;
+    gap: 10px;
+    justify-content: center;
+    padding: 12px 16px;
+    background: color-mix(in oklab, var(--bg) 95%, transparent);
+    border-bottom: 1px solid color-mix(in oklab,var(--muted) 20%,transparent);
+    backdrop-filter: blur(8px);
+  }
+  @media (min-width: 900px) {
+    #menu-grupos { grid-template-columns: repeat(5, 1fr); }
+  }
+  #menu-grupos a {
+    text-decoration: none;
+    color: var(--text);
+    background: var(--card);
+    border: 1px solid color-mix(in oklab,var(--muted) 30%,transparent);
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 14px;
+    text-align: center;
+    white-space: nowrap;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.1s ease;
+  }
+  #menu-grupos a:hover, #menu-grupos a.active {
+    background: var(--card-hover);
+    color: var(--accent);
+    transform: translateY(-1px);
+  }
 </style>
 </head>
 <body>
@@ -77,8 +110,31 @@
   </div>
 </header>
 
+<nav class="nav" id="menu-grupos">
+  <a href="#bancos">🏦 Bancos</a>
+  <a href="#cloud">☁️ Cloud</a>
+  <a href="#comunicacao">📅 Comunicação</a>
+  <a href="#compras">🛒 Compras</a>
+  <a href="#dev">🛠️ Dev & Deploy</a>
+  <a href="#digisystem">🏢 Digisystem</a>
+  <a href="#diversao">🎉 Diversão</a>
+  <a href="#ensino">🎓 Ensino</a>
+  <a href="#gov">🏛️ Gov & Serviços</a>
+  <a href="#ia">🤖 IA</a>
+  <a href="#mercado">📈 Mercado</a>
+  <a href="#midia">🧩 Mídia</a>
+  <a href="#pessoal">👤 Pessoal</a>
+  <a href="#produtividade">⚡ Produtividade</a>
+  <a href="#seguranca">🔐 Segurança</a>
+  <a href="#senac">🏫 Senac</a>
+  <a href="#sistemas">🧰 Sistemas</a>
+  <a href="#streaming">📺 Streaming</a>
+  <a href="#unicesumar">🏛️ Unicesumar</a>
+  <a href="#unisul">🎓 Unisul</a>
+</nav>
+
 <main class="container">
-  <!-- 👤 PESSOAL -->
+ <!-- 👤 PESSOAL -->
   <section id="pessoal" class="section" data-section="Pessoal">
     <h2>👤 Pessoal</h2>
     <div class="grid">
@@ -332,31 +388,41 @@
       <article class="card"><a class="title" href="https://whereby.com/" target="_blank">Whereby ↗</a><div class="url"><a href="https://whereby.com/" target="_blank">https://whereby.com/</a></div></article>
     </div>
   </section>
-
 </main>
 
 <button id="topBtn" title="Voltar ao topo">⬆️</button>
+
+
 
 <script>
   const q = document.getElementById('q');
   const cards = document.querySelectorAll('.card');
   q.addEventListener('input', () => {
     const v = q.value.toLowerCase();
-    cards.forEach(c => {
-      c.classList.toggle('hidden', !c.textContent.toLowerCase().includes(v));
-    });
+    cards.forEach(c => c.classList.toggle('hidden', !c.textContent.toLowerCase().includes(v)));
   });
 
-  // alternar tema
   const tbtn = document.getElementById('toggleTheme');
   const root = document.documentElement;
   let light = window.matchMedia('(prefers-color-scheme: light)').matches;
   if(light) root.classList.add('light');
   tbtn.onclick = () => root.classList.toggle('light');
 
-  // botão topo instantâneo
   document.getElementById('topBtn').onclick = () => window.scrollTo(0,0);
-</script>
 
+  const sections = document.querySelectorAll('section');
+  const menuLinks = document.querySelectorAll('#menu-grupos a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 120;
+      if (pageYOffset >= sectionTop) current = section.getAttribute('id');
+    });
+    menuLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href').includes(current)) link.classList.add('active');
+    });
+  });
+</script>
 </body>
 </html>
