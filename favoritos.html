@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Favoritos — Hélton Nunes</title>
+<meta name="color-scheme" content="light dark" />
+<style>
+  :root{
+    --bg:#0b0c10; --bg-soft:#111217; --text:#e9ecf1; --muted:#a9b0bb;
+    --card:#161821; --card-hover:#1d2030; --accent:#4cc9f0; --accent-2:#80ed99; --ring: rgba(76,201,240,.35)
+  }
+  :root.light{
+    --bg:#f7f8fb; --bg-soft:#fff; --text:#0d0f14; --muted:#5a6270;
+    --card:#ffffff; --card-hover:#f1f4f9; --accent:#0066ff; --accent-2:#09b26b; --ring: rgba(0,102,255,.22)
+  }
+  html,body{height:100%}
+  body{margin:0; font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial; background:var(--bg); color:var(--text)}
+  .container{max-width:1100px;margin:auto;padding:28px 16px 60px}
+  header{position:sticky;top:0;z-index:5;backdrop-filter:blur(6px);
+    background:color-mix(in oklab,var(--bg) 80%,transparent);
+    border-bottom:1px solid color-mix(in oklab,var(--muted) 20%,transparent)}
+  .topbar{max-width:1100px;margin:auto;padding:10px 16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+  h1{font-size:20px;margin:0 8px 0 0;letter-spacing:.2px}
+  .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border-radius:999px;background:var(--bg-soft);
+    border:1px solid color-mix(in oklab,var(--muted) 20%,transparent)}
+  input[type="search"]{all:unset;width:260px;max-width:50vw;padding:6px 8px;background:var(--card);border-radius:8px;
+    border:1px solid color-mix(in oklab,var(--muted) 30%,transparent)}
+  .btn{cursor:pointer;user-select:none;padding:8px 10px;border-radius:10px;border:1px solid color-mix(in oklab,var(--muted) 30%,transparent);
+    background:var(--card);color:var(--text)}
+  .nav{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0}
+  .nav a{text-decoration:none;color:var(--text);background:var(--card);
+    border:1px solid color-mix(in oklab,var(--muted) 30%,transparent);padding:6px 10px;border-radius:999px}
+  .section{margin-top:28px}
+  .section h2{font-size:18px;margin:0 0 14px;display:flex;align-items:center;gap:8px}
+  .grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+  .card{display:flex;flex-direction:column;gap:8px;padding:14px;border-radius:14px;background:var(--card);
+    border:1px solid color-mix(in oklab,var(--muted) 30%,transparent);
+    transition:.15s transform,.15s background,.15s border-color,.15s box-shadow}
+  .card:hover{background:var(--card-hover);transform:translateY(-2px);box-shadow:0 6px 18px -10px var(--ring)}
+  .card a.title{color:var(--text);text-decoration:none;font-weight:600;display:inline-flex;align-items:center;gap:8px}
+  .card .url a{color:var(--accent); text-decoration:none; word-break:break-all}
+  .card .url{font-family:ui-monospace,Menlo,Consolas,monospace; font-size:.9rem}
+  .hidden{display:none!important}
+  footer{margin:40px 0 0;color:var(--muted);font-size:.9rem}
+  .hr{height:1px;background:color-mix(in oklab,var(--muted) 20%,transparent);margin:24px 0}
+  .kbd{font-family:ui-monospace,Menlo,Consolas,monospace;background:var(--card);padding:2px 6px;border-radius:6px;
+    border:1px solid color-mix(in oklab,var(--muted) 25%,transparent)}
+
+  /* botão flutuante */
+  #topBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 46px;
+    height: 46px;
+    font-size: 22px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,.25);
+    transition: opacity 0.2s ease;
+  }
+  #topBtn:hover {opacity: 0.85;}
+</style>
+</head>
+<body>
+<header>
+  <div class="topbar">
+    <h1>Favoritos — Hélton Nunes</h1>
+    <div class="pill" role="search">🔎
+      <input id="q" type="search" placeholder="Buscar (título, link ou seção)…" aria-label="Buscar favoritos"/>
+    </div>
+    <button id="toggleTheme" class="btn" title="Alternar tema (claro/escuro)">🌓 Tema</button>
+  </div>
+</header>
+
+<main class="container">
+  <!-- 👤 PESSOAL -->
+  <section id="pessoal" class="section" data-section="Pessoal">
+    <h2>👤 Pessoal</h2>
+    <div class="grid">
+      <article class="card"><a class="title" href="https://mail.google.com/" target="_blank">Gmail ↗</a><div class="url"><a href="https://mail.google.com/" target="_blank">https://mail.google.com/</a></div></article>
+      <article class="card"><a class="title" href="https://calendar.google.com/" target="_blank">Google Calendar ↗</a><div class="url"><a href="https://calendar.google.com/" target="_blank">https://calendar.google.com/</a></div></article>
+      <article class="card"><a class="title" href="https://drive.google.com/" target="_blank">Google Drive ↗</a><div class="url"><a href="https://drive.google.com/" target="_blank">https://drive.google.com/</a></div></article>
+      <article class="card"><a class="title" href="https://photos.google.com/" target="_blank">Google Fotos ↗</a><div class="url"><a href="https://photos.google.com/" target="_blank">https://photos.google.com/</a></div></article>
+      <article class="card"><a class="title" href="https://forms.google.com/" target="_blank">Google Forms ↗</a><div class="url"><a href="https://forms.google.com/" target="_blank">https://forms.google.com/</a></div></article>
+      <article class="card"><a class="title" href="https://keep.google.com/" target="_blank">Google Keep ↗</a><div class="url"><a href="https://keep.google.com/" target="_blank">https://keep.google.com/</a></div></article>
+      <article class="card"><a class="title" href="https://www.google.com/finance/?hl=pt" target="_blank">Google Finance ↗</a><div class="url"><a href="https://www.google.com/finance/?hl=pt" target="_blank">https://www.google.com/finance/?hl=pt</a></div></article>
+      <article class="card"><a class="title" href="https://www.linkedin.com/" target="_blank">LinkedIn ↗</a><div class="url"><a href="https://www.linkedin.com/" target="_blank">https://www.linkedin.com/</a></div></article>
+      <article class="card"><a class="title" href="https://www.notion.so/" target="_blank">Notion ↗</a><div class="url"><a href="https://www.notion.so/" target="_blank">https://www.notion.so/</a></div></article>
+      <article class="card"><a class="title" href="https://outlook.live.com/" target="_blank">Outlook ↗</a><div class="url"><a href="https://outlook.live.com/" target="_blank">https://outlook.live.com/</a></div></article>
+      <article class="card"><a class="title" href="https://onedrive.live.com/" target="_blank">OneDrive ↗</a><div class="url"><a href="https://onedrive.live.com/" target="_blank">https://onedrive.live.com/</a></div></article>
+      <article class="card"><a class="title" href="https://web.whatsapp.com/" target="_blank">WhatsApp ↗</a><div class="url"><a href="https://web.whatsapp.com/" target="_blank">https://web.whatsapp.com/</a></div></article>
+      <article class="card"><a class="title" href="https://www.youtube.com/" target="_blank">YouTube ↗</a><div class="url"><a href="https://www.youtube.com/" target="_blank">https://www.youtube.com/</a></div></article>
+    </div>
+  </section>
+
+  <!-- 🛒 COMPRAS -->
+  <section id="compras" class="section" data-section="Compras">
+    <h2>🛒 Compras</h2>
+    <div class="grid">
+      <article class="card"><a class="title" href="https://www.amazon.com.br/" target="_blank">Amazon ↗</a><div class="url"><a href="https://www.amazon.com.br/" target="_blank">https://www.amazon.com.br/</a></div></article>
+      <article class="card"><a class="title" href="https://pt.aliexpress.com/" target="_blank">AliExpress ↗</a><div class="url"><a href="https://pt.aliexpress.com/" target="_blank">https://pt.aliexpress.com/</a></div></article>
+      <article class="card"><a class="title" href="https://www.kabum.com.br/" target="_blank">Kabum ↗</a><div class="url"><a href="https://www.kabum.com.br/" target="_blank">https://www.kabum.com.br/</a></div></article>
+      <article class="card"><a class="title" href="https://www.magazineluiza.com.br/" target="_blank">Magazine Luiza ↗</a><div class="url"><a href="https://www.magazineluiza.com.br/" target="_blank">https://www.magazineluiza.com.br/</a></div></article>
+      <article class="card"><a class="title" href="https://www.mercadolivre.com.br/" target="_blank">Mercado Livre ↗</a><div class="url"><a href="https://www.mercadolivre.com.br/" target="_blank">https://www.mercadolivre.com.br/</a></div></article>
+      <article class="card"><a class="title" href="https://shopee.com.br/" target="_blank">Shopee ↗</a><div class="url"><a href="https://shopee.com.br/" target="_blank">https://shopee.com.br/</a></div></article>
+      <article class="card"><a class="title" href="https://br.shein.com/" target="_blank">Shein ↗</a><div class="url"><a href="https://br.shein.com/" target="_blank">https://br.shein.com/</a></div></article>
+    </div>
+  </section>
+
+  <!-- 📺 STREAMING -->
+  <section id="streaming" class="section" data-section="Streaming">
+    <h2>📺 Streaming</h2>
+    <div class="grid">
+      <article class="card"><a class="title" href="https://www.disneyplus.com/" target="_blank">Disney+ ↗</a><div class="url"><a href="https://www.disneyplus.com/" target="_blank">https://www.disneyplus.com/</a></div></article>
+      <article class="card"><a class="title" href="https://www.max.com/" target="_blank">HBO / Max ↗</a><div class="url"><a href="https://www.max.com/" target="_blank">https://www.max.com/</a></div></article>
+      <article class="card"><a class="title" href="https://www.netflix.com/" target="_blank">Netflix ↗</a><div class="url"><a href="https://www.netflix.com/" target="_blank">https://www.netflix.com/</a></div></article>
+      <article class="card"><a class="title" href="https://www.primevideo.com/" target="_blank">Prime Video ↗</a><div class="url"><a href="https://www.primevideo.com/" target="_blank">https://www.primevideo.com/</a></div></article>
+      <article class="card"><a class="title" href="https://open.spotify.com/" target="_blank">Spotify ↗</a><div class="url"><a href="https://open.spotify.com/" target="_blank">https://open.spotify.com/</a></div></article>
+    </div>
+  </section>
+
+  <!-- 🏫 SENAC -->
+  <section id="senac" class="section" data-section="Senac">
+    <h2>🏫 Senac</h2>
+    <div class="grid">
+      <article class="card"><a class="title" href="https://apps2.sp.senac.br/analise-chamado/" target="_blank">Atendimento ↗</a><div class="url"><a href="https://apps2.sp.senac.br/analise-chamado/" target="_blank">https://apps2.sp.senac.br/analise-chamado/</a></div></article>
+      <article class="card"><a class="title" href="https://www.novocrm.sp.senac.br/Administracao/ControleAcessos" target="_blank">CRM ↗</a><div class="url"><a href="https://www.novocrm.sp.senac.br/Administracao/ControleAcessos" target="_blank">https://www.novocrm.sp.senac.br/Administracao/ControleAcessos</a></div></article>
+      <article class="card"><a class="title" href="https://apps.sp.senac.br/acesso-ferramentas/interface-user/index.cfm" target="_blank">Dashboard Processos ↗</a><div class="url"><a href="https://apps.sp.senac.br/acesso-ferramentas/interface-user/index.cfm" target="_blank">https://apps.sp.senac.br/acesso-ferramentas/interface-user/index.cfm</a></div></article>
+      <article class="card"><a class="title" href="#" target="_blank">Confluence ↗</a><div class="url"><a href="#" target="_blank">#</a></div></article>
+      <article class="card"><a class="title" href="#" target="_blank">Jira ↗</a><div class="url"><a href="#" target="_blank">#</a></div></article>
+      <article class="card"><a class="title" href="https://www.sp.senac.br/" target="_blank">Portal Senac SP ↗</a><div class="url"><a href="https://www.sp.senac.br/" target="_blank">https://www.sp.senac.br/</a></div></article>
+      <article class="card"><a class="title" href="http://10.9.0.113:8006/psp/hss/EMPLOYEE/HRMS/?cmd=logout" target="_blank">SS HOM ↗</a><div class="url"><a href="http://10.9.0.113:8006/psp/hss/EMPLOYEE/HRMS/?cmd=logout" target="_blank">http://10.9.0.113:8006/psp/hss/EMPLOYEE/HRMS/?cmd=logout</a></div></article>
+      <article class="card"><a class="title" href="https://senaconline-interno.sp.senac.br/psp/cs90pss/?cmd=login&languageCd=POR&" target="_blank">SS PRD ↗</a><div class="url"><a href="https://senaconline-interno.sp.senac.br/psp/cs90pss/?cmd=login&languageCd=POR&" target="_blank">https://senaconline-interno.sp.senac.br/psp/cs90pss/?cmd=login&languageCd=POR&</a></div></article>
+      <article class="card"><a class="title" href="https://vpnsenac.sp.senac.br/" target="_blank">VPN ↗</a><div class="url"><a href="https://vpnsenac.sp.senac.br/" target="_blank">https://vpnsenac.sp.senac.br/</a></div></article>
+    </div>
+  </section>
+
+  <!-- 🏢 DIGISYSTEM -->
+  <section id="digisystem" class="section" data-section="Digisystem">
+    <h2>🏢 Digisystem</h2>
+    <div class="grid">
+      <article class="card"><a class="title" href="https://intranet.digisystem.com.br/wp-login.php" target="_blank">Intranet ↗</a><div class="url"><a href="https://intranet.digisystem.com.br/wp-login.php" target="_blank">https://intranet.digisystem.com.br/wp-login.php</a></div></article>
+      <article class="card"><a class="title" href="#" target="_blank">Portal RH / Ponto ↗</a><div class="url"><a href="#" target="_blank">#</a></div></article>
+    </div>
+  </section>
+
+  <!-- 🎓 UNISUL -->
+  <section id="unisul" class="section" data-section="Unisul">
+    <h2>🎓 Unisul</h2>
+    <div class="grid">
+      <article class="card"><a class="title" href="https://ulife.com.br/" target="_blank">Ulife ↗</a><div class="url"><a href="https://ulife.com.br/" target="_blank">https://ulife.com.br/</a></div></article>
+    </div>
+  </section>
+
+  <!-- 🏛️ UNICESUMAR -->
+  <section id="unicesumar" class="section" data-section="Unicesumar">
+    <h2>🏛️ Unicesumar</h2>
+    <div class="grid">
+      <article class="card"><a class="title" href="https://intranet.unicesumar.edu.br/" target="_blank">Provas ↗</a><div class="url"><a href="https://intranet.unicesumar.edu.br/" target="_blank">https://intranet.unicesumar.edu.br/</a></div></article>
+    </div>
+  </section>
+
+  <!-- 🤖 IA -->
+  <section id="ia" class="section" data-section="IA">
+    <h2>🤖 IA</h2>
+    <div class="grid">
+      <article class="card"><a class="title" href="https://chat.openai.com/" target="_blank">ChatGPT ↗</a><div class="url"><a href="https://chat.openai.com/" target="_blank">https://chat.openai.com/</a></div></article>
+      <article class="card"><a class="title" href="https://gamma.app/" target="_blank">Gamma ↗</a><div class="url"><a href="https://gamma.app/" target="_blank">https://gamma.app/</a></div></article>
+      <article class="card"><a class="title" href="https://www.perplexity.ai/" target="_blank">Perplexity ↗</a><div class="url"><a href="https://www.perplexity.ai/" target="_blank">https://www.perplexity.ai/</a></div></article>
+      <article class="card"><a class="title" href="https://poe.com/" target="_blank">Poe ↗</a><div class="url"><a href="https://poe.com/" target="_blank">https://poe.com/</a></div></article>
+      <article class="card"><a class="title" href="#" target="_blank">Manus ↗</a><div class="url"><a href="#" target="_blank">#</a></div></article>
+      <article class="card"><a class="title" href="#" target="_blank">Lovable ↗</a><div class="url"><a href="#" target="_blank">#</a></div></article>
+      <article class="card"><a class="title" href="#" target="_blank">Copilot ↗</a><div class="url"><a href="#" target="_blank">#</a></div></article>
+    </div>
+  </section>
+
+  <!-- 🎉 DIVERSÃO -->
+  <section id="diversao" class="section" data-section="Diversão">
+    <h2>🎉 Diversão</h2>
+    <div class="grid">
+      <article class="card"><a class="title" href="https://superbet.bet.br/" target="_blank">Superbet ↗</a><div class="url"><a href="https://superbet.bet.br/" target="_blank">https://superbet.bet.br/</a></div></article>
+      <article class="card"><a class="title" href="https://www.bet365.bet.br/" target="_blank">Bet 365 ↗</a><div class="url"><a href="https://www.bet365.bet.br/" target="_blank">https://www.bet365.bet.br/</a></div></article>
+      <article class="card"><a class="title" href="https://www.facebook.com/" target="_blank">Facebook ↗</a><div class="url"><a href="https://www.facebook.com/" target="_blank">https://www.facebook.com/</a></div></article>
+      <article class="card"><a class="title" href="https://www.instagram.com/" target="_blank">Instagram ↗</a><div class="url"><a href="https://www.instagram.com/" target="_blank">https://www.instagram.com/</a></div></article>
+      <article class="card"><a class="title" href="https://www.tiktok.com/" target="_blank">TikTok ↗</a><div class="url"><a href="https://www.tiktok.com/" target="_blank">https://www.tiktok.com/</a></div></article>
+      <article class="card"><a class="title" href="https://twitter.com/" target="_blank">X (Twitter) ↗</a><div class="url"><a href="https://twitter.com/" target="_blank">https://twitter.com/</a></div></article>
+    </div>
+  </section>
+
+  <!-- 🧰 SISTEMAS -->
+  <section id="sistemas" class="section" data-section="Sistemas">
+    <h2>🧰 Sistemas</h2>
+    <div class="grid">
+      <article class="card"><a class="title" href="https://github.com/" target="_blank">GitHub ↗</a><div class="url"><a href="https://github.com/" target="_blank">https://github.com/</a></div></article>
+      <article class="card"><a class="title" href="#" target="_blank">Pessoal ↗</a><div class="url"><a href="#" target="_blank">#</a></div></article>
+      <article class="card"><a class="title" href="https://server44.integrator.com.br:2083/" target="_blank">Rodobras Server ↗</a><div class="url"><a href="https://server44.integrator.com.br:2083/" target="_blank">https://server44.integrator.com.br:2083/</a></div></article>
+      <article class="card"><a class="title" href="http://15.235.9.156:26887/rb/login.xhtml" target="_blank">Rodobras Sistema ↗</a><div class="url"><a href="http://15.235.9.156:26887/rb/login.xhtml" target="_blank">http://15.235.9.156:26887/rb/login.xhtml</a></div></article>
+      <article class="card"><a class="title" href="https://server28.integrator.com.br:2083/" target="_blank">KR Server ↗</a><div class="url"><a href="https://server28.integrator.com.br:2083/" target="_blank">https://server28.integrator.com.br:2083/</a></div></article>
+      <article class="card"><a class="title" href="http://148.113.159.129:26887/kr/login.xhtml" target="_blank">KR Sistema ↗</a><div class="url"><a href="http://148.113.159.129:26887/kr/login.xhtml" target="_blank">http://148.113.159.129:26887/kr/login.xhtml</a></div></article>
+    </div>
+  </section>
+
+  <!-- 🏦 BANCOS -->
+  <section id="bancos" class="section" data-section="Bancos">
+    <h2>🏦 Bancos</h2>
+    <div class="grid">
+      <article class="card"><a class="title" href="https://www.bb.com.br/" target="_blank">Banco do Brasil ↗</a><div class="url"><a href="https://www.bb.com.br/" target="_blank">https://www.bb.com.br/</a></div></article>
+      <article class="card"><a class="title" href="https://www.btgpactual.com/" target="_blank">BTG Pactual ↗</a><div class="url"><a href="https://www.btgpactual.com/" target="_blank">https://www.btgpactual.com/</a></div></article>
+      <article class="card"><a class="title" href="https://banco.bradesco/" target="_blank">Bradesco ↗</a><div class="url"><a href="https://banco.bradesco/" target="_blank">https://banco.bradesco/</a></div></article>
+      <article class="card"><a class="title" href="https://www.caixa.gov.br/" target="_blank">Caixa Econômica Federal ↗</a><div class="url"><a href="https://www.caixa.gov.br/" target="_blank">https://www.caixa.gov.br/</a></div></article>
+      <article class="card"><a class="title" href="https://www.c6bank.com.br/" target="_blank">C6 Bank ↗</a><div class="url"><a href="https://www.c6bank.com.br/" target="_blank">https://www.c6bank.com.br/</a></div></article>
+      <article class="card"><a class="title" href="https://www.santander.com.br/" target="_blank">Santander ↗</a><div class="url"><a href="https://www.santander.com.br/" target="_blank">https://www.santander.com.br/</a></div></article>
+      <article class="card"><a class="title" href="https://www.itau.com.br/" target="_blank">Itaú ↗</a><div class="url"><a href="https://www.itau.com.br/" target="_blank">https://www.itau.com.br/</a></div></article>
+      <article class="card"><a class="title" href="https://www.inter.co/" target="_blank">Inter ↗</a><div class="url"><a href="https://www.inter.co/" target="_blank">https://www.inter.co/</a></div></article>
+      <article class="card"><a class="title" href="https://nubank.com.br/" target="_blank">Nubank ↗</a><div class="url"><a href="https://nubank.com.br/" target="_blank">https://nubank.com.br/</a></div></article>
+      <article class="card"><a class="title" href="https://www.xpi.com.br/" target="_blank">XP Investimentos ↗</a><div class="url"><a href="https://www.xpi.com.br/" target="_blank">https://www.xpi.com.br/</a></div></article>
+    </div>
+  </section>
+
+
+  <!-- ⚡ PRODUTIVIDADE -->
+  <section id="produtividade" class="section" data-section="Produtividade">
+    <h2>⚡ Produtividade</h2>
+    <div class="grid">
+      <article class="card"><a class="title" href="https://bitly.com/" target="_blank">Bitly ↗</a><div class="url"><a href="https://bitly.com/" target="_blank">https://bitly.com/</a></div></article>
+      <article class="card"><a class="title" href="https://www.canva.com/" target="_blank">Canva ↗</a><div class="url"><a href="https://www.canva.com/" target="_blank">https://www.canva.com/</a></div></article>
+      <article class="card"><a class="title" href="https://pdf24.org/" target="_blank">PDF24 Tools ↗</a><div class="url"><a href="https://pdf24.org/" target="_blank">https://pdf24.org/</a></div></article>
+      <article class="card"><a class="title" href="https://trello.com/" target="_blank">Trello ↗</a><div class="url"><a href="https://trello.com/" target="_blank">https://trello.com/</a></div></article>
+      <article class="card"><a class="title" href="https://tinypng.com/" target="_blank">TinyPNG ↗</a><div class="url"><a href="https://tinypng.com/" target="_blank">https://tinypng.com/</a></div></article>
+      <article class="card"><a class="title" href="https://wetransfer.com/" target="_blank">WeTransfer ↗</a><div class="url"><a href="https://wetransfer.com/" target="_blank">https://wetransfer.com/</a></div></article>
+      <article class="card"><a class="title" href="https://www.notion.so/" target="_blank">Notion ↗</a><div class="url"><a href="https://www.notion.so/" target="_blank">https://www.notion.so/</a></div></article>
+    </div>
+  </section>
+
+  <!-- 🛠️ DEV & DEPLOY -->
+  <section id="dev" class="section" data-section="Dev & Deploy">
+    <h2>🛠️ Dev & Deploy</h2>
+    <div class="grid">
+      <article class="card"><a class="title" href="https://mvnrepository.com/" target="_blank">Maven Central ↗</a><div class="url"><a href="https://mvnrepository.com/" target="_blank">https://mvnrepository.com/</a></div></article>
+      <article class="card"><a class="title" href="https://postman.com/" target="_blank">Postman Web ↗</a><div class="url"><a href="https://postman.com/" target="_blank">https://postman.com/</a></div></article>
+      <article class="card"><a class="title" href="https://reqbin.com/" target="_blank">ReqBin ↗</a><div class="url"><a href="https://reqbin.com/" target="_blank">https://reqbin.com/</a></div></article>
+      <article class="card"><a class="title" href="https://stackoverflow.com/" target="_blank">Stack Overflow ↗</a><div class="url"><a href="https://stackoverflow.com/" target="_blank">https://stackoverflow.com/</a></div></article>
+      <article class="card"><a class="title" href="https://start.spring.io/" target="_blank">Spring Initializr ↗</a><div class="url"><a href="https://start.spring.io/" target="_blank">https://start.spring.io/</a></div></article>
+      <article class="card"><a class="title" href="https://editor.swagger.io/" target="_blank">Swagger Editor ↗</a><div class="url"><a href="https://editor.swagger.io/" target="_blank">https://editor.swagger.io/</a></div></article>
+    </div>
+  </section>
+
+  <!-- ☁️ CLOUD & REPOSITÓRIOS -->
+  <section id="cloud" class="section" data-section="Cloud & Repositórios">
+    <h2>☁️ Cloud & Repositórios</h2>
+    <div class="grid">
+      <article class="card"><a class="title" href="https://www.docker.com/" target="_blank">Docker Hub ↗</a><div class="url"><a href="https://www.docker.com/" target="_blank">https://www.docker.com/</a></div></article>
+      <article class="card"><a class="title" href="https://vercel.com/" target="_blank">Vercel ↗</a><div class="url"><a href="https://vercel.com/" target="_blank">https://vercel.com/</a></div></article>
+      <article class="card"><a class="title" href="https://www.netlify.com/" target="_blank">Netlify ↗</a><div class="url"><a href="https://www.netlify.com/" target="_blank">https://www.netlify.com/</a></div></article>
+      <article class="card"><a class="title" href="https://labs.play-with-docker.com/" target="_blank">Docker Playgrounds ↗</a><div class="url"><a href="https://labs.play-with-docker.com/" target="_blank">https://labs.play-with-docker.com/</a></div></article>
+      <article class="card"><a class="title" href="https://railway.app/" target="_blank">Railway ↗</a><div class="url"><a href="https://railway.app/" target="_blank">https://railway.app/</a></div></article>
+      <article class="card"><a class="title" href="https://fly.io/" target="_blank">Fly.io ↗</a><div class="url"><a href="https://fly.io/" target="_blank">https://fly.io/</a></div></article>
+      <article class="card"><a class="title" href="https://github.com/features/actions" target="_blank">GitHub Actions ↗</a><div class="url"><a href="https://github.com/features/actions" target="_blank">https://github.com/features/actions</a></div></article>
+    </div>
+  </section>
+
+  <!-- 🎓 ENSINO -->
+  <section id="ensino" class="section" data-section="Ensino">
+    <h2>🎓 Ensino</h2>
+    <div class="grid">
+      <article class="card"><a class="title" href="https://classroom.google.com/" target="_blank">Google Classroom ↗</a><div class="url"><a href="https://classroom.google.com/" target="_blank">https://classroom.google.com/</a></div></article>
+      <article class="card"><a class="title" href="https://moodle.org/" target="_blank">Moodle ↗</a><div class="url"><a href="https://moodle.org/" target="_blank">https://moodle.org/</a></div></article>
+      <article class="card"><a class="title" href="https://kahoot.com/" target="_blank">Kahoot ↗</a><div class="url"><a href="https://kahoot.com/" target="_blank">https://kahoot.com/</a></div></article>
+      <article class="card"><a class="title" href="https://www.mentimeter.com/" target="_blank">Mentimeter ↗</a><div class="url"><a href="https://www.mentimeter.com/" target="_blank">https://www.mentimeter.com/</a></div></article>
+      <article class="card"><a class="title" href="https://www.overleaf.com/" target="_blank">Overleaf ↗</a><div class="url"><a href="https://www.overleaf.com/" target="_blank">https://www.overleaf.com/</a></div></article>
+      <article class="card"><a class="title" href="https://jamboard.google.com/" target="_blank">Jamboard ↗</a><div class="url"><a href="https://jamboard.google.com/" target="_blank">https://jamboard.google.com/</a></div></article>
+      <article class="card"><a class="title" href="https://www.desmos.com/" target="_blank">Desmos ↗</a><div class="url"><a href="https://www.desmos.com/" target="_blank">https://www.desmos.com/</a></div></article>
+    </div>
+  </section>
+
+  <!-- 🏛️ GOV & SERVIÇOS BR -->
+  <section id="gov" class="section" data-section="Gov & Serviços BR">
+    <h2>🏛️ Gov & Serviços BR</h2>
+    <div class="grid">
+      <article class="card"><a class="title" href="https://www.gov.br/" target="_blank">gov.br ↗</a><div class="url"><a href="https://www.gov.br/" target="_blank">https://www.gov.br/</a></div></article>
+      <article class="card"><a class="title" href="https://conectesus.saude.gov.br/" target="_blank">Conecte SUS ↗</a><div class="url"><a href="https://conectesus.saude.gov.br/" target="_blank">https://conectesus.saude.gov.br/</a></div></article>
+      <article class="card"><a class="title" href="https://www.gov.br/receitafederal" target="_blank">Receita Federal (e-CAC) ↗</a><div class="url"><a href="https://www.gov.br/receitafederal" target="_blank">https://www.gov.br/receitafederal</a></div></article>
+      <article class="card"><a class="title" href="https://meu.inss.gov.br/" target="_blank">INSS ↗</a><div class="url"><a href="https://meu.inss.gov.br/" target="_blank">https://meu.inss.gov.br/</a></div></article>
+      <article class="card"><a class="title" href="https://www.gov.br/pt-br/servicos/obter-carteira-nacional-de-habilitacao" target="_blank">CNH Digital ↗</a><div class="url"><a href="https://www.gov.br/pt-br/servicos/obter-carteira-nacional-de-habilitacao" target="_blank">https://www.gov.br/.../cnh</a></div></article>
+      <article class="card"><a class="title" href="https://www.enotariado.org.br/" target="_blank">e-Notariado ↗</a><div class="url"><a href="https://www.enotariado.org.br/" target="_blank">https://www.enotariado.org.br/</a></div></article>
+    </div>
+  </section>
+
+  <!-- 📈 MERCADO FINANCEIRO -->
+  <section id="mercado" class="section" data-section="Mercado Financeiro">
+    <h2>📈 Mercado Financeiro</h2>
+    <div class="grid">
+      <article class="card"><a class="title" href="https://www.tesourodireto.com.br/" target="_blank">Tesouro Direto ↗</a><div class="url"><a href="https://www.tesourodireto.com.br/" target="_blank">https://www.tesourodireto.com.br/</a></div></article>
+      <article class="card"><a class="title" href="https://www.b3.com.br/" target="_blank">B3 (Cotações) ↗</a><div class="url"><a href="https://www.b3.com.br/" target="_blank">https://www.b3.com.br/</a></div></article>
+      <article class="card"><a class="title" href="https://www.bcb.gov.br/" target="_blank">Banco Central ↗</a><div class="url"><a href="https://www.bcb.gov.br/" target="_blank">https://www.bcb.gov.br/</a></div></article>
+      <article class="card"><a class="title" href="https://br.investing.com/" target="_blank">Investing.com Brasil ↗</a><div class="url"><a href="https://br.investing.com/" target="_blank">https://br.investing.com/</a></div></article>
+    </div>
+  </section>
+
+  <!-- 🔐 SEGURANÇA -->
+  <section id="seguranca" class="section" data-section="Segurança">
+    <h2>🔐 Segurança</h2>
+    <div class="grid">
+      <article class="card"><a class="title" href="https://authy.com/" target="_blank">Authy ↗</a><div class="url"><a href="https://authy.com/" target="_blank">https://authy.com/</a></div></article>
+      <article class="card"><a class="title" href="https://1password.com/" target="_blank">1Password ↗</a><div class="url"><a href="https://1password.com/" target="_blank">https://1password.com/</a></div></article>
+      <article class="card"><a class="title" href="https://haveibeenpwned.com/" target="_blank">Have I Been Pwned ↗</a><div class="url"><a href="https://haveibeenpwned.com/" target="_blank">https://haveibeenpwned.com/</a></div></article>
+      <article class="card"><a class="title" href="https://www.ssllabs.com/ssltest/" target="_blank">SSL Labs ↗</a><div class="url"><a href="https://www.ssllabs.com/ssltest/" target="_blank">https://www.ssllabs.com/ssltest/</a></div></article>
+      <article class="card"><a class="title" href="https://www.virustotal.com/" target="_blank">VirusTotal ↗</a><div class="url"><a href="https://www.virustotal.com/" target="_blank">https://www.virustotal.com/</a></div></article>
+    </div>
+  </section>
+
+  <!-- 🧩 MÍDIA & CONTEÚDO -->
+  <section id="midia" class="section" data-section="Mídia & Conteúdo">
+    <h2>🧩 Mídia & Conteúdo</h2>
+    <div class="grid">
+      <article class="card"><a class="title" href="https://www.remove.bg/" target="_blank">Remove.bg ↗</a><div class="url"><a href="https://www.remove.bg/" target="_blank">https://www.remove.bg/</a></div></article>
+      <article class="card"><a class="title" href="https://unsplash.com/" target="_blank">Unsplash ↗</a><div class="url"><a href="https://unsplash.com/" target="_blank">https://unsplash.com/</a></div></article>
+    </div>
+  </section>
+
+  <!-- 📅 COMUNICAÇÃO & AGENDA -->
+  <section id="comunicacao" class="section" data-section="Comunicação & Agenda">
+    <h2>📅 Comunicação & Agenda</h2>
+    <div class="grid">
+      <article class="card"><a class="title" href="https://calendar.google.com/" target="_blank">Google Calendar ↗</a><div class="url"><a href="https://calendar.google.com/" target="_blank">https://calendar.google.com/</a></div></article>
+      <article class="card"><a class="title" href="https://calendly.com/" target="_blank">Calendly ↗</a><div class="url"><a href="https://calendly.com/" target="_blank">https://calendly.com/</a></div></article>
+      <article class="card"><a class="title" href="https://whereby.com/" target="_blank">Whereby ↗</a><div class="url"><a href="https://whereby.com/" target="_blank">https://whereby.com/</a></div></article>
+    </div>
+  </section>
+
+</main>
+
+<button id="topBtn" title="Voltar ao topo">⬆️</button>
+
+<script>
+  const q = document.getElementById('q');
+  const cards = document.querySelectorAll('.card');
+  q.addEventListener('input', () => {
+    const v = q.value.toLowerCase();
+    cards.forEach(c => {
+      c.classList.toggle('hidden', !c.textContent.toLowerCase().includes(v));
+    });
+  });
+
+  // alternar tema
+  const tbtn = document.getElementById('toggleTheme');
+  const root = document.documentElement;
+  let light = window.matchMedia('(prefers-color-scheme: light)').matches;
+  if(light) root.classList.add('light');
+  tbtn.onclick = () => root.classList.toggle('light');
+
+  // botão topo instantâneo
+  document.getElementById('topBtn').onclick = () => window.scrollTo(0,0);
+</script>
+
+</body>
+</html>
