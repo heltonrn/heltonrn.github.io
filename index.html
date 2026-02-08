@@ -10,7 +10,7 @@
   <meta property="og:title" content="Links e Materiais — Hélton" />
   <meta property="og:description" content="Conteúdos, cursos e materiais reunidos em um só lugar." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="chatgpt.jpeg" />
+  <meta property="og:image" content="ChatGpt.jpeg" />
 
   <meta name="theme-color" content="#0ea5e9" />
 
@@ -78,3 +78,173 @@
       place-items: center;
       color: #fff;
       font-weight: 700;
+      font-size: 26px;
+    }
+
+    .who h1 {
+      font-size: 20px;
+      margin: 0 0 6px;
+    }
+
+    .who p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* ===== FOTO DE DESTAQUE ===== */
+    .hero-photo {
+      width: 100%;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 28px var(--shadow);
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* ===== LINKS ===== */
+    .section h2 {
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 18px 2px 8px;
+    }
+
+    .links {
+      display: grid;
+      gap: 12px;
+    }
+
+    .link {
+      display: grid;
+      grid-template-columns: 42px 1fr auto;
+      gap: 12px;
+      align-items: center;
+      background: var(--card);
+      border-radius: 16px;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      transition: 0.15s;
+    }
+
+    .link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px var(--shadow);
+      border-color: var(--accent);
+    }
+
+    .icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      color: var(--accent-2);
+      background: rgba(14,165,233,0.15);
+    }
+
+    .title {
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .desc {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .cta {
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, var(--accent), var(--accent-2));
+      color: white;
+      text-transform: uppercase;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 520px) {
+      .header {
+        grid-template-columns: 64px 1fr;
+      }
+
+      .avatar {
+        width: 52px;
+        height: 52px;
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <!-- HEADER -->
+    <header class="header">
+      <div class="avatar">HN</div>
+      <div class="who">
+        <h1>Hélton Ribeiro Nunes</h1>
+        <p>Professor, analista de sistemas/requisitos, PO e dev. Conteúdos sobre Banco de Dados, Java, Agilidade e mais.</p>
+      </div>
+    </header>
+
+    <!-- FOTO -->
+    <div class="hero-photo">
+      <img src="ChatGpt.jpeg" alt="Foto do professor Hélton" />
+    </div>
+
+    <!-- LINKS -->
+    <section class="section">
+      <h2>Materiais e Cursos</h2>
+
+      <div class="links">
+
+        <a class="link" href="https://www.udemy.com/" target="_blank">
+          <div class="icon">🎓</div>
+          <div>
+            <div class="title">Curso • Banco de Dados para Iniciantes</div>
+            <div class="desc">Curso completo para quem está começando.</div>
+          </div>
+          <span class="cta">Acessar</span>
+        </a>
+
+        <a class="link" href="https://www.youtube.com/" target="_blank">
+          <div class="icon">▶</div>
+          <div>
+            <div class="title">Canal no YouTube</div>
+            <div class="desc">Vídeos e conteúdos novos de vez em quando 😄</div>
+          </div>
+          <span class="cta">Ver</span>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      © <span id="year"></span> Hélton Ribeiro Nunes — Conteúdos em constante evolução.
+    </footer>
+
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
